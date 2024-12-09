@@ -1,0 +1,38 @@
+    1  clear
+    2  cd ~
+    3  mkdir ~/lab6
+    4  cd ~/lab6
+    5  nano hello.c
+    6  nano Makefile
+    7  nano hello.c
+    8  nano Makefile
+    9  clear
+   10  $KDIR/scripts/checkpatch.pl -f hello.c
+   11  nano hello.c
+   12  $KDIR/scripts/checkpatch.pl -f hello.c
+   13  nano hello.c
+   14  $KDIR/scripts/checkpatch.pl -f hello.c
+   15  export KDIR=$HOME/repos/linux-stable
+   16  make
+   17  ls
+   18  mv hello.ko ~/repos/busybox/_install
+   19  ls
+   20  cd ~/repos/busybox/_install
+   21  ls
+   22  find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
+   23  cd ~/repos/busybox
+   24  qemu-system-arm -kernel _install/boot/zImage -initrd rootfs.cpio.gz -machine virt -nographic -m 512 --append "root=/dev/ram0 rw console=ttyAMA0,115200 mem=512M"
+   25  nano hello.c
+   26  cd ~/lab6
+   27  nano hello.c
+   28  make
+   29  $KDIR/scripts/checkpatch.pl -f hello.c
+   30  make
+   31  mv hello.ko ~/repos/busybox/_install
+   32  cd ~/repos/busybox/_install
+   33  find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
+   34  ls
+   35  cd ~/repos/busybox
+   36  qemu-system-arm -kernel _install/boot/zImage -initrd rootfs.cpio.gz -machine virt -nographic -m 512 --append "root=/dev/ram0 rw console=ttyAMA0,115200 mem=512M"
+   37  cd ~/lab6
+   38  history > lab6.txt
